@@ -9,6 +9,14 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestMain(m *testing.M) {
+	// before
+	fmt.Println("BEFORE UNIT TESTING")
+	m.Run()
+	fmt.Println("AFTER UNIT TESTING")
+
+}
+
 func TestSkip(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		t.Skip("Can not run on Windows")
@@ -22,14 +30,14 @@ func TestSkip(t *testing.T) {
 func TestHelloWorldRequire(t *testing.T) {
 	result := HelloWorld("Piscki")
 
-	require.Equal(t, "Hi Piscki", result, "Result must be 'Hi Piscki'")
+	require.Equal(t, "Hello Piscki", result, "Result must be 'Hello Piscki'")
 	fmt.Println("testing require done")
 }
 
 func TestHelloWorldAssertion(t *testing.T) {
 	result := HelloWorld("Piscki")
 
-	assert.Equal(t, "Hi Piscki", result, "Result must be 'Hi Piscki'")
+	assert.Equal(t, "Hello Piscki", result, "Result must be 'Hello Piscki'")
 	fmt.Println("testing assertion done")
 }
 
